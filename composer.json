@@ -1,0 +1,23 @@
+{
+    "name": "hugoandrade/container-di",
+    "type": "library",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HugoAndrade\\ContainerDI\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hugo Andrade",
+            "email": "hugoramosandrade@gmail.com"
+        }
+    ],
+    "require": {
+        "psr/container": "^2.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^7.1"
+    }
+}
