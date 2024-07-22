@@ -22,7 +22,7 @@ class DI implements ContainerInterface
             return $this->resolve($id);
         }
 
-        if ($this->hasNot($id)) throw new NotFoundException("No entry was found for {$id} identifier");
+        if ($this->hasNot($id)) throw new NotFoundException("No entry was found for '{$id}' identifier");
 
         $dependencies = self::$dependencies[$id];
 
