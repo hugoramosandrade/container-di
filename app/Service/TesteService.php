@@ -8,6 +8,7 @@ class TesteService
 {
     public function __construct(
         private TesteInterface $repository,
+        private int $number = 0,
     )
     {
         //

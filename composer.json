@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "HugoAndrade\\ContainerDI\\": "app/"
-        }
+        },
+        "files": [
+            "helpers/functions.php"
+        ]
     },
     "authors": [
         {

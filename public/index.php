@@ -7,8 +7,10 @@ use HugoAndrade\ContainerDI\Teste;
 
 require_once "../vendor/autoload.php";
 
-$container = new DI;
+$container1 = DI::getInstance();
 
-$container->set(TesteInterface::class, Teste::class);
+$container1->set(TesteInterface::class, Teste::class);
 
-dd($container->get(TesteService::class));
+$instance = $container1->get(TesteService::class);
+
+dd($instance);

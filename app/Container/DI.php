@@ -11,6 +11,11 @@ class DI implements ContainerInterface
 {
     private static array $dependencies = [];
 
+    public static function getInstance(): self
+    {
+        return new self;
+    }
+
     public function get(string $id)
     {
         if (class_exists($id)) {
@@ -62,6 +67,8 @@ class DI implements ContainerInterface
                         $constructorParams[] = $this->resolve($dependencyClass->getName());
                     } else if (interface_exists($type) && $this->has($type)) {
                         $constructorParams[] = $this->resolve(self::$dependencies[$type]);
+                    } else if($dependencyClass->isBuiltin() && $param->isDefaultValueAvailable()) {
+                        $constructorParams[] = $param->getDefaultValue();
                     } else {
                         throw new ContainerException("Can't resolve entry '{$type}'");
                     }
