@@ -60,7 +60,11 @@ class DI implements ContainerInterface
             $constructorParams = [];
             foreach ($params as $param) {
                 $dependencyClass = $param->getType();
-                if ($dependencyClass instanceof \ReflectionType) {
+                if ($param->isDefaultValueAvailable()) {
+                    $constructorParams[] = $param->getDefaultValue();
+                } else if ($dependencyClass instanceof \ReflectionUnionType) {
+                    throw new ContainerException("Can't resolve entry.");
+                } else if ($dependencyClass instanceof \ReflectionType) {
                     /** @var ReflectionType $dependencyClass */
                     $type = $dependencyClass->getName();
                     if (class_exists($type)) {
